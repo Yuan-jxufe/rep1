@@ -38,4 +38,13 @@ public String table() {
 	return  "table";
 }
 
+@RequestMapping("/companyLoginpage")
+public String companyLogin() {
+	return"CompanyLogin";
+}
+
+@RequestMapping("/publishPage")
+public String publishpage() {
+	return "publish";
+}
 }

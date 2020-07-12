@@ -4,6 +4,7 @@ import com.jxufe.job.db.entity.JobEntity;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.InsertProvider;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
@@ -17,11 +18,12 @@ public interface JobEntityMapper {
         "where jobid = #{jobid,jdbcType=INTEGER}"
     })
     int deleteByPrimaryKey(Integer jobid);
-
+    
+    @Options(keyColumn = "jobid",keyProperty = "jobid",useGeneratedKeys = true)
     @Insert({
-        "insert into job (jobid, jobName, ",
+        "insert into job ( jobName, ",
         "jobDescribe)",
-        "values (#{jobid,jdbcType=INTEGER}, #{jobname,jdbcType=VARCHAR}, ",
+        "values ( #{jobname,jdbcType=VARCHAR}, ",
         "#{jobdescribe,jdbcType=VARCHAR})"
     })
     int insert(JobEntity record);

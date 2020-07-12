@@ -20,4 +20,9 @@ public class CompanyrequireEntityKey {
     public void setcId(Integer cId) {
         this.cId = cId;
     }
+
+	@Override
+	public String toString() {
+		return "CompanyrequireEntityKey [jobid=" + jobid + ", cId=" + cId + "]";
+	}
 }

@@ -22,4 +22,10 @@ public class CompanyrequireEntity extends CompanyrequireEntityKey {
     public void setPublishtime(Date publishtime) {
         this.publishtime = publishtime;
     }
+
+	@Override
+	public String toString() {
+		return "CompanyrequireEntity [number=" + number + ", publishtime=" + publishtime + ", toString()="
+				+ super.toString() + "]";
+	}
 }
