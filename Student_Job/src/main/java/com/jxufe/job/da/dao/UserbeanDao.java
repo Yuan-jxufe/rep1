@@ -5,6 +5,8 @@
  */
 package com.jxufe.job.da.dao;
 
+import java.util.List;
+
 import com.jxufe.job.db.entity.UserEntity;
 
 public interface UserbeanDao {
@@ -14,5 +16,9 @@ public interface UserbeanDao {
 	public UserEntity selectBykey(int id);
 	
 	public int inserUser(UserEntity userEntity);
+	
+	 public List<UserEntity> listUser();
+	 
+	 public int updateByUser(UserEntity userEntity);
 }
 

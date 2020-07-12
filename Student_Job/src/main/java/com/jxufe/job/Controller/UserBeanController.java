@@ -5,16 +5,24 @@
  */
 package com.jxufe.job.Controller;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.taglibs.standard.lang.jstl.test.beans.PublicBean1;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jxufe.job.Service.UserService;
+import com.jxufe.job.da.bean.CompanyReqireBean;
+import com.jxufe.job.da.bean.ListResult;
+import com.jxufe.job.da.dao.CompanyReqireBeanDao;
 import com.jxufe.job.da.dao.UserbeanDao;
 import com.jxufe.job.db.entity.UserEntity;
 
@@ -43,4 +51,46 @@ public class UserBeanController {
 	System.out.println(userEntity);
 	return service.userRegister(userEntity);
 }
+
+@ResponseBody
+@RequestMapping("/UserMessage")
+	public UserEntity getUserMessage(HttpServletResponse response) throws Exception {
+	System.out.println("Usermessage");
+	if (service.getUserMessage()==null) {
+
+	   return null;
+	}
+	return service.getUserMessage();
+}
+
+@ResponseBody
+@RequestMapping("/changeUser")
+	public String changeUser(UserEntity userEntity) {
+	System.out.println("changeUser");
+	
+	int result= service.changeUser(userEntity);
+	if (result==0) {
+		return null;
+	}
+	service.setUserSession(userEntity.getUserid());
+	return "OK";
+	
+}
+
+//@ResponseBody
+//@RequestMapping("/crjson")
+//	public ListResult findcrJson(int limit,int offset){
+//	return service.findCRAllpage(limit, offset);
+//}
+@ResponseBody
+@RequestMapping("/crjson")
+	public List<CompanyReqireBean> findcrJson(){
+	return service.findCRAll();
+}
+	@RequestMapping("/getjson")
+	public void get(String data) {
+		System.out.println("getjson");
+		System.out.println(data);
+	}
+	
 }

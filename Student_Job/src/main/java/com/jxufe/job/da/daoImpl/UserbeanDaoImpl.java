@@ -5,6 +5,8 @@
  */
 package com.jxufe.job.da.daoImpl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +34,18 @@ public class UserbeanDaoImpl implements UserbeanDao{
 	public int inserUser(UserEntity userEntity) {
 		
 		return userbeanMapper.insertSelective(userEntity);
+	}
+
+	@Override
+	public List<UserEntity> listUser() {
+		
+		return userbeanMapper.listUser();
+	}
+
+	@Override
+	public int updateByUser(UserEntity userEntity) {
+		
+		return userbeanMapper.updateByPrimaryKeySelective(userEntity);
 	}
 	
 	

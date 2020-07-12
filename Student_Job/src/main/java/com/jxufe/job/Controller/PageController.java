@@ -28,4 +28,14 @@ public String userRegister() {
 	System.out.println("!!!注册!!!!");
 	return"zhuce";
 }
+@RequestMapping("/change")
+public String userchange() {
+	System.out.println("!!!修改!!!!");
+	return"changeUser";
+}
+@RequestMapping("/table")
+public String table() {
+	return  "table";
+}
+
 }

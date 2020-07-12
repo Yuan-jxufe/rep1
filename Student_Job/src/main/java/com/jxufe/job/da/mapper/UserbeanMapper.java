@@ -10,11 +10,18 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
+import com.jxufe.job.db.entity.CompanyEntity;
 import com.jxufe.job.db.entity.UserEntity;
 import com.jxufe.job.db.mapper.UserEntityMapper;
 @Mapper
 public interface UserbeanMapper extends UserEntityMapper{
 
 	  @Select("select * from J_user")
-	  public List<UserEntity> selectUser();
+	  public List<UserEntity> listUser();
+	  
+	  
+	  @Select("select * from company")
+	  public List<CompanyEntity> listcompany();
+	  
+	  
 }
