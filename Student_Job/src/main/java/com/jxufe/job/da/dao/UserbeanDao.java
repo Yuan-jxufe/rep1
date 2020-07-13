@@ -8,6 +8,7 @@ package com.jxufe.job.da.dao;
 import java.util.List;
 
 import com.jxufe.job.db.entity.UserEntity;
+import com.jxufe.job.db.entity.User_statusEntity;
 
 public interface UserbeanDao {
 
@@ -20,5 +21,7 @@ public interface UserbeanDao {
 	 public List<UserEntity> listUser();
 	 
 	 public int updateByUser(UserEntity userEntity);
+	 
+	 public int insertUserStatus(User_statusEntity user_statusEntity);
 }
 

@@ -47,4 +47,8 @@ public String companyLogin() {
 public String publishpage() {
 	return "publish";
 }
+@RequestMapping("/table1")
+public String subuserMassage() {
+	return"subuserMassage";
+}
 }

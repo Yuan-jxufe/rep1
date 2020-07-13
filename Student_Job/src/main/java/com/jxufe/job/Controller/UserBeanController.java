@@ -87,10 +87,12 @@ public class UserBeanController {
 	public List<CompanyReqireBean> findcrJson(){
 	return service.findCRAll();
 }
-	@RequestMapping("/getjson")
-	public void get(String data) {
-		System.out.println("getjson");
-		System.out.println(data);
-	}
+	
+@RequestMapping("/subreqire")
+@ResponseBody
+	public void subreire(String cid,String jobid) {
+	service.subRequire(cid,jobid);
+	}	
+	
 	
 }

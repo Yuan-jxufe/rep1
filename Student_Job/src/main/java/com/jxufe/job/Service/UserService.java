@@ -22,6 +22,7 @@ import com.jxufe.job.da.bean.ListResult;
 import com.jxufe.job.da.dao.CompanyReqireBeanDao;
 import com.jxufe.job.da.dao.UserbeanDao;
 import com.jxufe.job.db.entity.UserEntity;
+import com.jxufe.job.db.entity.User_statusEntity;
 @Service
 public class UserService {
 	@Autowired UserbeanDao userbeanDao;
@@ -32,7 +33,7 @@ public class UserService {
 			if (userPassword.equals(userbeanDao.getPassword(userId))) {
 			UserEntity user=userbeanDao.selectBykey(userId);	
 			HttpSession session=request.getSession();
-			session.setAttribute("user", user );//保持客户登入状态
+			session.setAttribute("user",user );//保持客户登入状态
 				System.out.println("登入成功");
 				return "OK";
 			}
@@ -75,6 +76,22 @@ public class UserService {
 	ListResult result = new ListResult(pageInfo.getTotal(),pageInfo.getList());
 	return result;
 	
+		
+	}
+	
+	public String subRequire(String cid, String jobid) {
+		UserEntity user=(UserEntity) request.getSession().getAttribute("user");
+		System.out.println("当前用户"+user);
+		User_statusEntity user_statusEntity=new User_statusEntity();
+		user_statusEntity.setcId(Integer.parseInt(cid));
+		user_statusEntity.setJobid(Integer.parseInt(cid));
+		user_statusEntity.setUserid(user.getUserid());
+		
+		int result=userbeanDao.insertUserStatus(user_statusEntity);
+		if (result==1) {
+			return "OK";
+		}
+		return "false";
 		
 	}
 	

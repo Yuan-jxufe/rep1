@@ -13,11 +13,14 @@ import org.springframework.stereotype.Service;
 import com.jxufe.job.da.bean.Userbean;
 import com.jxufe.job.da.dao.UserbeanDao;
 import com.jxufe.job.da.mapper.UserbeanMapper;
+import com.jxufe.job.da.mapper.UserstatusbeanMapper;
 import com.jxufe.job.db.entity.UserEntity;
+import com.jxufe.job.db.entity.User_statusEntity;
 
 @Service
 public class UserbeanDaoImpl implements UserbeanDao{
 @Autowired UserbeanMapper userbeanMapper;
+@Autowired UserstatusbeanMapper userstatusbeanMapper;
 	
 	public String getPassword(int userId) {
 		UserEntity user=  userbeanMapper.selectByPrimaryKey(userId);
@@ -46,6 +49,12 @@ public class UserbeanDaoImpl implements UserbeanDao{
 	public int updateByUser(UserEntity userEntity) {
 		
 		return userbeanMapper.updateByPrimaryKeySelective(userEntity);
+	}
+
+	@Override
+	public int insertUserStatus(User_statusEntity user_statusEntity) {
+		
+		return userstatusbeanMapper.insert(user_statusEntity);
 	}
 	
 	
